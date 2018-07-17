@@ -647,7 +647,7 @@ Property name|Value|Description
 `videoCodecProfile`|`toInt($("#live_streaming_codec").val())`|Video codec
 `videoGop`|`toInt($("#live_streaming_gop").val())`|Video Gop
 
-Note: Most of the property values are converted to integers using `toInt()`.
+**Note:** Most of the property values are converted to integers using `toInt()`.
 
 Complete the method by returning the property object `coding`.
 
@@ -1089,14 +1089,15 @@ Create a `coding` properties object and retrieve:
 
 Property name|Value|Description
 ---|---|---
-`x: toInt($("#live_streaming_user_x").val()),
-`y: toInt($("#live_streaming_user_y").val()),
-`width: toInt($("#live_streaming_user_width").val()),
-`height: toInt($("#live_streaming_user_height").val()),
-`zorder: toInt($("#live_streaming_user_z").val()),
-`alpha: toFloat($("#live_streaming_user_alpha").val()),
-`uid: toInt($("#live_streaming_user_uid").val())
+`x`|`toInt($("#live_streaming_user_x").val())`|X location of the video
+`y`|`toInt($("#live_streaming_user_y").val())`|Y location of the video
+`width`|`toInt($("#live_streaming_user_width").val())`|Width of the video
+`height`|`toInt($("#live_streaming_user_height").val())`|Height of the video
+`zorder`|`toInt($("#live_streaming_user_z").val())`|Z index of the video
+`alpha`|`toFloat($("#live_streaming_user_alpha").val())`|Alpha value of the video
+`uid`|`toInt($("#live_streaming_user_uid").val())`|User ID for the video stream
 
+**Note:** Most of the property values are converted to integers using `toInt()`.
 
 If `coding.uid` is not valid, display an alert prompting the user to `provide a uid`. Otherwise, invoke `addTranscodingUser` applying the `coding` properties object.
 

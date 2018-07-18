@@ -1,43 +1,46 @@
 
 # Agora Interactive Broadcasting Tutorial for Web
 
-This tutorial enables you to quickly get started with creating an Agora account, downloading the SDK, and using the Agora sample app to integrate live streaming into using the [Agora 2.0+ API](https://docs.agora.io/en/2.2/product/Voice/API%20Reference/communication_web_audio#voice-call-api) such as:
+This tutorial describes how to create an Agora account, download the SDK, and use the Agora sample app to integrate live streaming using the [Agora 2.0+ API](https://docs.agora.io/en/2.2/product/Voice/API%20Reference/communication_web_audio#voice-call-api).
 
-- [Join](#create-join-method) / [Leave](#create-leave-method) calls
-- [Publish / Unpublish streams](#create-publish-and-unpublish-methods)
+With this sample app, you can:
+
+- [Join calls](#create-the-join-method)
+- [Leave calls](#create-the-leave-method)
+- [Publish and unpublish streams](#create-the-publish-and-unpublish-methods)
 - [Add user transcoding to start a live stream](#create-transcoding-methods)
 
 ## Prerequisites
-- Agora.io Developer Account
-- Web server that supports SSL (https)
+- An Agora.io developer account
+- A web server that supports SSL (https)
 
 ## Quick Start
 This section shows you how to prepare, build, and run the sample application.
 
 ### Create an Account and Obtain an App ID
-In order to build and run the sample application you must obtain an App ID: 
+To build and run the sample application, first obtain an app ID: 
 
-1. Create a developer account at [agora.io](https://dashboard.agora.io/signin/). Once you finish the signup process, you will be redirected to the Dashboard.
-2. Navigate in the Dashboard tree on the left to **Projects** > **Project List**.
-3. Copy the App ID that you obtained from the Dashboard into a text file. You will use this when you launch the app.
+1. Create a developer account at [agora.io](https://dashboard.agora.io/signin/). Once you finish the sign-up process, you are redirected to the dashboard.
+2. Navigate in the dashboard tree on the left to **Projects** > **Project List**.
+3. Copy the app ID that you obtain from the dashboard into a text file. You will use this when you launch the app.
 
-### Integrate the Agora Video SDK into the sample project
+### Integrate the Agora Video SDK into the Sample Project
 
-The SDK must be integrated into the sample project before it can run.
+To use the Agora Video SDK, you must first integrate the Agora Video SDK into the sample project.
 
 1. Download the Agora Video SDK from [Agora.io SDK](https://www.agora.io/en/download/). Under the **Video + Interactive Broadcasting SDK** heading, choose the **Web** download.
 2. Unzip the downloaded SDK package.
 
 	![download.jpg](images/download.jpg)
 
-3. Copy the `AgoraRTCSDK` js file into the root of your GitHub project folder. The file will have a sample name similar to `AgoraRTCSDK-2.2.0.js`.
+3. Copy the `AgoraRTCSDK` .js file into the root of your GitHub project folder. The file will have a sample name similar to `AgoraRTCSDK-2.2.0.js`.
 
-	**Note:** `2.2.0` is a placeholder for the version number of the SDK js file you downloaded.
+	**Note:** `2.2.0` is a placeholder for the version number of the SDK .js file you downloaded.
 	
 ### Update and Run the Sample Application 
 
 1. Open the `index.html` file in a code editor.
-2. At the top of the file, in the `<head>` section, make sure the JavaScript file source is changed to `AgoraRTCSDK-2.2.0.js`. Ensure the `2.2.0` placeholder is the version number of the SDK js file you downloaded.
+2. At the top of the file, in the `<head>` section, make sure the JavaScript file source is now `AgoraRTCSDK-2.2.0.js`. Ensure the `2.2.0` placeholder is the version number of the SDK .js file you downloaded.
 
 	**Before**
 
@@ -52,27 +55,27 @@ The SDK must be integrated into the sample project before it can run.
 	```
 	
 3. Deploy the project on a web server. Make sure you access the page through an SSL (https) connection. The Agora SDK requires a secure connection to use the audio and video devices connected to the browser.
-4. Use your browser to navigate to the index.html file. Once you have loaded the sample app, your browser will look like this:
+4. Use your browser to navigate to the `index.html` file. After you load the sample app, your browser looks like this:
 
 	![appPreview.jpg](images/appPreview.jpg)
 
-5. In your browser window, paste the AppID into the **Key** UI text field.
+5. In your browser window, paste the `AppID` into the **Key** UI text field.
 
 	![download.jpg](images/demoKey.jpg)
 
-6. Add your rtmp server URL into **Publish Url** field.
+6. Add your RTMP server URL into the **Publish Url** field.
 
 	![publishUrl.jpg](images/publishUrl.jpg)
 
-7. Press the **Join** UI button to join the call. As soon as someone else joins the call, the call will start and you will see each other in the browser window.
+7. Press the **Join** UI button to join the call. As soon as someone else joins the call, the call starts, and you and the other caller can see each other in the browser window.
 
-	**Note:** If your sample app must be accessible using mobile browsers, ensure the [`createClient`](https://docs.agora.io/en/2.2/product/Voice/API%20Reference/communication_web_audio#voice-call-api) method is called with the proper `mode` (See section *Create the Client*). For more information, see the [Agora API documentation](https://docs.agora.io/en/).
+	**Note:** If your sample app must be accessible on mobile browsers, ensure the [`createClient`](https://docs.agora.io/en/2.2/product/Voice/API%20Reference/communication_web_audio#voice-call-api) method is called with the proper `mode`. See [Create the Join Method](#create-the-join-method). For more information, see the [Agora API documentation](https://docs.agora.io/en/).
 
 8. To add an existing user to the live stream video, press **Add Transcoding User**. Use the transcoding user configuration fields to modify the user's frame position and size.
 
 	![transcodingUser.jpg](images/transcodingUser.jpg)
 
-9. To start a live stream with same transcoding settings, press **Add Streaming**.
+9. To start a live stream with the same transcoding settings, press **Add Streaming**.
 
 	![addStream.jpg](images/addStream.jpg)
 
@@ -84,28 +87,28 @@ The SDK must be integrated into the sample project before it can run.
 - [Initialize the Application](#initialize-the-application)
 - [Create Conversion Methods](#create-conversion-methods)
 - [Create Transcoding, Streaming, and Encoding Methods](#create-transcoding-streaming-and-encoding-methods)
-- [Create UI Update Method](#create-ui-update-method)
-- [Create Join Method](#create-join-method)
-- [Create Leave Method](#create-leave-method)
-- [Create Publish and Unpublish Methods](#create-publish-and-unpublish-methods)
+- [Create the UI Update Method](#create-ui-update-method)
+- [Create the Join Method](#create-the-join-method)
+- [Create the Leave Method](#create-the-leave-method)
+- [Create the Publish and Unpublish Methods](#create-the-publish-and-unpublish-methods)
 
 ### Create Visual Assets and Connect External Scripts
 
-Add the following icon assets for the user interface to the *assets* folder:
+Add the following icon assets for the user interface to the **assets** folder:
 
 Asset|Description                                                                                        
 ---|---
-`mute48.png`|An image of a muted microphone to mute audio
-`sound48.png`|An image of an unmuted microphone to unmute audio
+`mute48.png`|An icon of a muted microphone to mute audio
+`sound48.png`|An icon of an unmuted microphone to unmute audio
 
 
 The sample application uses three external libraries:
 
 File Path|Description
 ---|---
-`vendor/bootstrap.min.css`|Bootstrap stylesheet for a responsive web UI
-`AgoraRTCSDK-2.1.0.js`|The Agora Web SDK. Ensure the `2.1.0` placeholder is the version number of the SDK js file you downloaded.
-`vendor/jquery.js`|JQuery library
+`vendor/bootstrap.min.css`|A bootstrap stylesheet for a responsive web UI
+`AgoraRTCSDK-2.1.0.js`|The Agora Web SDK. Ensure the `2.1.0` placeholder is the version number of the SDK .js file you downloaded.
+`vendor/jquery.js`|A JQuery library
 
 ``` HTML
 <!DOCTYPE html>
@@ -127,7 +130,7 @@ File Path|Description
 </html>
 ```
 
-The remaining code for this tutorial is contained in the `<body>` tag.
+The remaining code for this tutorial is contained within the `<body>` tags.
 
 ### Design the User Interface
 
@@ -135,15 +138,15 @@ The sample application contains four main sections.
 
 Section|Description
 ---|---
-Top UI section|General application settings, video call configuration and controls
+Top UI section|General application settings; video call configuration and controls
 Transcoding UI section|Transcoding configuration and controls for the current user
 Transcoding Users UI section|Transcoding configuration and controls for other users
-Video Display section|Area to add and display the video objects
+Video Display area|An area to add and display the video objects
 
 - [Build the Top UI Section](#build-the-top-ui-section)
 - [Build the Transcoding UI Section](#build-the-transcoding-ui-section)
 - [Build the Transcoding Users UI Section](#build-the-transcoding-users-ui-section)
-- [Build Video Display Section](#build-video-display-section)
+- [Build the Video Display Area](#build-the-video-display-area)
 
 #### Build the Top UI Section
 
@@ -151,11 +154,11 @@ The key UI elements that determine the application settings and video configurat
 
 Element ID|Element Type|Description
 ---|---|---
-`audioSource`|`<select>`|Selection menu to choose the audio source
-`videoSource`|`<select>`|Selection menu to choose the video source
+`audioSource`|`<select>`|A select menu to choose the audio source
+`videoSource`|`<select>`|A Select menu to choose the video source
 `key`|`<input type="text">`|Text input for the Agora API key
 `channel`|`<input type="text">`|Text input for the channel number
-`video`|`<input type="checkbox">`|Checkbox to indicate if the user is the host
+`video`|`<input type="checkbox">`|A checkbox to indicate if the user is the host
 
 ``` HTML
   <div id="div_device" class="panel panel-default">
@@ -185,7 +188,7 @@ Element ID|Element Type|Description
   </div>
 ```
 
-The following buttons are contained right before the above closing `</div>` tag. These buttons invoke methods that interact with the Agora SDK. 
+The following buttons are contained just before the closing `</div>` tag shown above. These buttons invoke methods that interact with the Agora SDK. 
 
 Button Name|Button ID|Method|Description
 ---|---|---|---
@@ -205,7 +208,7 @@ Unpublish|`unpublish`|`unpublish()`|Unpublishes the stream
 
 This section defines the key UI elements that determine transcoding configuration and controls for the current user.
 
-The following UI elements determine the basic video settings.
+The following UI elements determine the basic video settings:
 
 Element ID|Element Type|Description
 ---|---|---
@@ -214,7 +217,7 @@ Element ID|Element Type|Description
 `live_streaming_bg_color`|`<input>`|Text input for the background color of the stream
 `live_streaming_bitrate`|`<input>`|Text input for the stream's bit rate
 `live_streaming_fps`|`<input>`|Text input for the stream's frames per second
-`live_streaming_codec`|`<select>`|Select menu for the stream's codec
+`live_streaming_codec`|`<select>`|A select menu for the stream's codec
 
 ``` HTML
     <div class="panel-body">
@@ -262,11 +265,11 @@ Element ID|Element Type|Description
 
 ```
 
-The following UI elements determine the audio settings.
+The following UI elements determine the audio settings:
 
 Element ID|Element Type|Description
 ---|---|---
-`live_streaming_audio_samples`|`<select>`|Select menu for the stream's audio sample rate
+`live_streaming_audio_samples`|`<select>`|A select menu for the stream's audio sample rate
 `live_streaming_audio_channels`|`<input>`|Text input for the audio channels
 `live_streaming_audio_bitrate`|`<input>`|Text input for the audio bit rate
 
@@ -289,13 +292,13 @@ Element ID|Element Type|Description
           </div>
 ```
 
-The following UI elements determine the size and latency for the video.
+The following UI elements determine the size and latency of the video:
 
 Element ID|Element Type|Description
 ---|---|---
 `live_streaming_canvas_width`|`<input>`|Text input for the canvas width
 `live_streaming_canvas_height`|`<input>`|Text input for the canvas height
-`live_streaming_low_latency`|`<input type="checkbox">`|Checkbox to set stream to low latency
+`live_streaming_low_latency`|`<input type="checkbox">`|A checkbox to set the stream to low latency
 
 ``` HTML
           <div class="form-group">
@@ -317,11 +320,11 @@ Element ID|Element Type|Description
 
 This section defines key UI elements that determine transcoding configuration and controls for other users.
 
-The following UI elements determine the transcoding user visual settings.
+The following UI elements determine the transcoding user visual settings:
 
 Element ID|Element Type|Description
 ---|---|---
-`live_streaming_user_uid`|`<select>`|Select menu for the list of users
+`live_streaming_user_uid`|`<select>`|A select menu for the list of users
 `live_streaming_user_x`|`<input>`|Text input for the x location of the user's stream
 `live_streaming_user_y`|`<input>`|Text input for the y location of the user's stream
 `live_streaming_user_width`|`<input>`|Text input for the width of the user's stream
@@ -363,11 +366,11 @@ Element ID|Element Type|Description
         </div>
 ```
 
-The following UI elements manage transcoding users.
+The following UI elements manage transcoding users:
 
 Element ID|Element Type|Description
 ---|---|---
-`live_streaming_users_list`|`<select>`|Select menu for for the list of transcoding users
+`live_streaming_users_list`|`<select>`|A select menu for the list of transcoding users
 `live_streaming_user_remove`|`<button>`|Button to remove a transcoding user
 `live_streaming_user_add`|`<button>`|Button to add a streaming user
 
@@ -385,15 +388,15 @@ Element ID|Element Type|Description
         </div>
 ```
 
-The following UI elements manage streaming users.
+The following UI elements manage streaming users:
 
 Element ID|Element Type|Description
 ---|---|---
-`live_streaming_list`|`<select>`|Select menu input for streaming users
-`live_streaming_set_encoding`|`<button>`|Button to set the encoding for a streaming user
-`live_streaming_stop_streaming`|`<button>`|Button to remove a streaming user
-`live_streaming_start_streaming`|`<button>`|Button to add a streaming user
-`live_streaming_enable_transcoding`|`<input type="checkbox">`|Checkbox to enable transcoding for a user
+`live_streaming_list`|`<select>`|A select menu input for streaming users
+`live_streaming_set_encoding`|`<button>`|A button to set the encoding for a streaming user
+`live_streaming_stop_streaming`|`<button>`|A button to remove a streaming user
+`live_streaming_start_streaming`|`<button>`|A button to add a streaming user
+`live_streaming_enable_transcoding`|`<input type="checkbox">`|A checkbox to enable transcoding for a user
 
 ``` HTML
         <div class="form-inline" style="margin-top: 10px">
@@ -417,9 +420,9 @@ Element ID|Element Type|Description
         </div>
 ```
 
-#### Build Video Display Area
+#### Build the Video Display Area
 
-The `video` `div` element is the location where video stream objects are be added.
+The `video` `div` element is the location where video stream objects are added.
 
 The `agora_local` `div` element is where the local video object displays.
 
@@ -431,7 +434,7 @@ The `agora_local` `div` element is where the local video object displays.
 
 ### System Requirements, Logging, and Global Variables
 
-`AgoraRTC` is the base JavaScript class of Agora Web SDK, which enables the use of Agora Web SDK's communication functionality. The code in this section is within the `<script>` tags.
+The base JavaScript class of the Agora Web SDK is `AgoraRTC`, which enables the use of the Agora Web SDK communication functionality. The code in this section is within the `<script>` tags.
 
 ``` HTML
   <script language="javascript">
@@ -451,11 +454,11 @@ Agora requires WebRTC to run. To alert users that their browser does not support
     }
 ```
 
-#### Set up Logging
+#### Set Up Logging
 
 Set up logging using `AgoraRTC.Logger`. The various log types are listed below:
 
-Log method|Description
+Log Method|Description
 ---|---
 `AgoraRTC.Logger.error()`|Error log
 `AgoraRTC.Logger.warning('')`|Warning log
@@ -475,14 +478,15 @@ Log method|Description
 Define the global variables for the sample application:
 
 Variable|Description
+---|---
 `client`|The Agora client object
 `localStream`|The local stream object
 `camera`|The current video source
 `microphone`|The current audio source
-`uids`|Array of users
-`transcodingUsers`|Array of transcoding users
-`streams`|Array of user streams
-`publishUrl`|Real-Time Messaging Protocol (RTMP) URL
+`uids`|An array of users
+`transcodingUsers`|An array of transcoding users
+`streams`|An array of user streams
+`publishUrl`|The Real-Time Messaging Protocol (RTMP) URL
 `audioSelect`|The audio select UI menu
 `videoSelect`|The video select UI menu
 
@@ -501,7 +505,7 @@ Variable|Description
 ### Initialize the Application
 
 
-#### Create Default Encoding Method
+#### Create the Default Encoding Method
 
 The `setDefaultEncoding()` method sets the default RTMP URL, bit rate, and frames-per-second values for the text input UI elements `live_streaming_url`, `live_streaming_bitrate`, and `live_streaming_fps`.
 
@@ -524,9 +528,9 @@ The `getDevices()` method populates the audio and video selection menu UI elemen
 
 `AgoraRTC.getDevices()` retrieves a list of available devices.
 
-- If the device is an audio device, specified by `device.kind === 'audioinput'`, add the device to the `audioSelect` menu using `audioSelect.appendChild()`.
-- If the device is an audio device, specified by `device.kind === 'videoinput'`, add the device to the `videoSelect` menu using `videoSelect.appendChild()`.
-- If the device is not an audio or video device, log the device to the console using `console.log()`.
+- If the device is an audio device specified by `device.kind === 'audioinput'`, add the device to the `audioSelect` menu using `audioSelect.appendChild()`.
+- If the device is an audio device specified by `device.kind === 'videoinput'`, add the device to the `videoSelect` menu using `videoSelect.appendChild()`.
+- If the device is not an audio or a video device, log the device to the console using `console.log()`.
 
 ``` JavaScript
     function getDevices() {
@@ -562,7 +566,7 @@ Invoke `getDevices()` and `setDefaultEncoding()` to initialize the UI for the sa
 
 The methods in this section are helper methods used in calculations for the sample application.
 
-The `toInt()` method converts `val` into an integer using `parseInt()`. Return the resulting `value` if it is valid, otherwise return `0`.
+The `toInt()` method converts `val` into an integer using `parseInt()`. Return the resulting `value` if it is valid; otherwise, return `0`.
 
 ``` JavaScript
     //utils
@@ -576,7 +580,7 @@ The `toInt()` method converts `val` into an integer using `parseInt()`. Return t
     }
 ```
 
-The `toInt()` method converts `val` into a float using `parseFloat()`. Return the resulting `value` if it is valid, otherwise return `0`.
+The `toInt()` method converts `val` into a float using `parseFloat()`. Return the resulting `value` if it is valid; otherwise, return `0`.
 
 ``` JavaScript
     function toFloat(val) {
@@ -599,7 +603,7 @@ The `toInt()` method converts `val` into a float using `parseFloat()`. Return th
 
 The `addTranscodingUser()` method adds a transcoding user to the sample application. This method is invoked by the [`live_streaming_user_add` UI button](#build-the-transcoding-users-ui-section).
 
-Add `user` to the `transcodingUsers` array using `push()` and update the UI using `onContextUpdate()`.
+Add a `user` to the `transcodingUsers` array using `push()` and update the UI using `onContextUpdate()`.
 
 ``` JavaScript
     //live-streaming related
@@ -612,8 +616,8 @@ Add `user` to the `transcodingUsers` array using `push()` and update the UI usin
 
 The `removeTranscodingUser()` method removes a transcoding user from the sample application. This method is invoked by the [`live_streaming_user_remove` UI button](#build-the-transcoding-users-ui-section).
 
-1. Find the index of the selected user using `$("#live_streaming_users_list").val()`
-2. Remove the user from the `transcodingUsers` array based on `selectedIdx` and using `splice()`
+1. Find the index of the selected user using `$("#live_streaming_users_list").val()`.
+2. Remove the user from the `transcodingUsers` array based on `selectedIdx` and using `splice()`.
 3. Update the UI using `onContextUpdate()`.
 
 ``` JavaScript
@@ -626,18 +630,18 @@ The `removeTranscodingUser()` method removes a transcoding user from the sample 
 
 The `calcTranscoding()` method returns an object of properties for transcoding.
 
-Retrieve the background color value by using `$("#live_streaming_bg_color").val()`. Convert `bgcolor` to an integer using `parseInt()`. If the background color is invalid, set `bgcolor` to `0`.
+Retrieve the background color value by using `$("#live_streaming_bg_color").val()`. Convert the `bgcolor` to an integer using `parseInt()`. If the background color is invalid, set the `bgcolor` to `0`.
 
-Create a properties object `coding` and set the following properties:
+Create a `coding` properties object and set the following properties:
 
-Property name|Value|Description
+Property Name|Value|Description
 ---|---|---
 `width`|`toInt($("#live_streaming_canvas_width").val())`|Canvas width
 `height`|`toInt($("#live_streaming_canvas_height").val())`|Canvas height
 `videoFramerate`|`toInt($("#live_streaming_fps").val())`|Frames per second
 `videoBitrate`|`toInt($("#live_streaming_bitrate").val())`|Bit rate
-`userCount`|`transcodingUsers.length`|user count
-`transcodingUsers`|`transcodingUsers`|Array of transcoding users
+`userCount`|`transcodingUsers.length`|User count
+`transcodingUsers`|`transcodingUsers`|Transcoding users array
 `audioBitrate`|`toInt($("#live_streaming_audio_bitrate").val())`|Audio bit rate
 `audioChannels`|`toInt($("#live_streaming_audio_channels").val())`|Audio channels
 `audioSampleRate`|`toInt($("#live_streaming_audio_samples").val())`|Audio sample rate
@@ -649,7 +653,7 @@ Property name|Value|Description
 
 **Note:** Most of the property values are converted to integers using `toInt()`.
 
-Complete the method by returning the property object `coding`.
+Complete the method by returning the  `coding` properties object:
 
 ``` JavaScript
     function calcTranscoding() {
@@ -683,7 +687,7 @@ Complete the method by returning the property object `coding`.
     }
 ```
 
-The `setTranscoding()` method retrieves the `coding` property values using `calcTranscoding()`. Apply it to Agora `client` using `client.setLiveTranscoding()`.
+The `setTranscoding()` method retrieves the `coding` property values using `calcTranscoding()`. Apply it to the Agora `client` using `client.setLiveTranscoding()`.
 
 ``` JavaScript
     function setTranscoding() {
@@ -697,12 +701,12 @@ The `setTranscoding()` method retrieves the `coding` property values using `calc
 
 The `addStreaming()` method adds a streaming user. This method is invoked by the [`live_streaming_start_streaming` UI button](#build-the-transcoding-users-ui-section).
 
-1. Check if the user is already streaming using `streams.indexOf(url) !== -1`. If the user is streaming, display and alert using `alert()`.
+1. Check if the user is already streaming using `streams.indexOf(url) !== -1`. If the user is streaming, display an alert using `alert()`.
 2. Check if transcoding is enabled:
-	- If `enableTranscoding` is `false`, start the live stream by passing `false` into `client.startLiveStreaming()`
-	- If `enableTranscoding` is `true`, apply the `transcoding` property object to the `client` using `client.setLiveTranscoding()` and start the live stream by passing `true` into `client.startLiveStreaming()`
+	- If `enableTranscoding` is `false`, start the live stream by passing `false` into `client.startLiveStreaming()`.
+	- If `enableTranscoding` is `true`, apply the `transcoding` property object to the `client` using `client.setLiveTranscoding()` and start the live stream by passing `true` into `client.startLiveStreaming()`.
 
-Add `url` to the `streams` array using `push()` and update the UI using `onContextUpdate()`.
+Add the `url` to the `streams` array using `push()` and update the UI using `onContextUpdate()`.
 
 ``` JavaScript
     function addStreaming(url, enableTranscoding) {
@@ -727,10 +731,10 @@ Add `url` to the `streams` array using `push()` and update the UI using `onConte
 
 The `removeStreaming()` method stops a user from streaming. This method is invoked by the [`live_streaming_stop_streaming` UI button](#build-the-transcoding-users-ui-section).
 
-1. Find the index of the selected user using `$("#live_streaming_list").val()`
-2. Remove the streaming user from the `streams` array based on `selectedIdx` and using `splice()`
-3. Update the UI using `onContextUpdate()`
-4. Stop the live streaming for the user using `client.stopLiveStreaming()`
+1. Find the index of the selected user using `$("#live_streaming_list").val()`.
+2. Remove the streaming user from the `streams` array based on `selectedIdx` and using `splice()`.
+3. Update the UI using `onContextUpdate()`.
+4. Stop the live streaming for the user using `client.stopLiveStreaming()`.
 
 ``` JavaScript
     function removeStreaming() {
@@ -752,23 +756,23 @@ The `setEncoding()` method sets the encoding for the Agora `client` by applying 
     }
 ```
 
-### Create UI Update Method
+### Create the UI Update Method
 
-The `onContextUpdate()` method updates the UI as users lists and settings are updated.
+The `onContextUpdate()` method updates the UI as the lists of users and their settings are updated.
 
 Update the users list:
 
-1. Clear the users list using `$("#live_streaming_user_uid").html()`
+1. Clear the users list using `$("#live_streaming_user_uid").html()`.
 2. Iterate through the users and append the `uids` as an `<option>` tag using `$("#live_streaming_user_uid").append()`.
 
 Update the transcoding users list:
 
-1. Clear the transcoding user list using `$("#live_streaming_users_list").html()`
+1. Clear the transcoding users list using `$("#live_streaming_users_list").html()`.
 2. Iterate through the transcoding users and append the `transcodingUsers` as an `<option>` tag using `$("#live_streaming_users_list").append()`.
 
 Update the streaming users list:
 
-1. Clear the streaming user list using `$("#live_streaming_list").html()`
+1. Clear the streaming users list using `$("#live_streaming_list").html()`
 2. Iterate through the streaming users and append the `streams` as an `<option>` tag using `$("#live_streaming_list").append()`.
 
 ``` JavaScript
@@ -794,15 +798,15 @@ Update the streaming users list:
     }
 ```
 
-### Create Join Method
+### Create the Join Method
 
 The `join()` method joins a user to the Agora `client`.
 
-Disable the `join` and `video` UI elements by setting the `disabled` property to `true` and initialize `channel_key` to `null`.
+Disable the `join` and `video` UI elements by setting the `disabled` property to `true` and initialize the `channel_key` to `null`.
 
-Create the `client` with the `interop` mode using `AgoraRTC.createClient()` and initialize it with `key.value` using `client.init()`.
+Create the `client` with the `interop` mode using `AgoraRTC.createClient()` and initialize it with the `key.value` using `client.init()`.
 
-The remaining code in this section are within the `client.init()` callback and at the end of the `join()` method to add additional event listeners and callbacks.
+The remaining code in this section adds additional event listeners and callbacks. It is within the `client.init()` callback and at the end of the `join()` method.
 
 - [Add Join Functionality](#add-join-functionality)
 - [Add Join Event Listeners and Callbacks](#add-join-event-listeners-and-callbacks)
@@ -833,7 +837,7 @@ The remaining code in this section are within the `client.init()` callback and a
 
 #### Add Join Functionality
 
-The `client.join()` method joins the user to the channel. This method occurs after the `client` intialized, so set the `uids` array to contain just this user's `uid`.
+The `client.join()` method joins a user to the channel. Because this method occurs after the `client` is initialized, set the `uids` array to contain just this user's `uid`.
 
 If the `video` UI checkbox is checked, set the device and stream properties. The next set of code explains how to do this for the sample application.
 
@@ -855,10 +859,10 @@ If the `video` UI checkbox is checked, set the device and stream properties. The
 
 Create and set the stream properties:
 
-- Set the current video source, `camera` to `videoSource.value`
-- Set the current audio source `microphone` to `audioSource.value`
-- Create a new stream for the user `uid` and apply the video and audio sources using `AgoraRTC.createStream()`
-- If the `video` UI element is checked, set the video profile to `720p_3` using `localStream.setVideoProfile()`
+1. Set the current video source `camera` to `videoSource.value`.
+2. Set the current audio source `microphone` to `audioSource.value`.
+3. Create a new stream for the user `uid` and apply the video and audio sources using `AgoraRTC.createStream()`.
+4. If the `video` UI element is checked, set the video profile to `720p_3` using `localStream.setVideoProfile()`.
 
 ``` JavaScript
             camera = videoSource.value;
@@ -870,12 +874,12 @@ Create and set the stream properties:
             }
 ```
 
-Add event listeners to the stream using `localStream.on()` and add console logs as the callbacks using `console.log()`.
+Add event listeners to the stream using `localStream.on()` and add console logs to the callbacks using `console.log()`.
 
-Event listener|Description
+Event Listener|Description
 ---|---
-`accessAllowed`|Access is allowed for the stream
-`accessDenied`|Access is denied for the stream
+`accessAllowed`|Allows access for the stream
+`accessDenied`|Denies access for the stream
 
 ``` JavaScript
             // The user has granted access to the camera and mic.
@@ -893,9 +897,9 @@ Initialize the local stream using `localStream.init()`.
 
 If the callback is successful:
 
-1. Add a success message to the console log using `console.log()`
-2. Publish the local stream using `client.publish()`
-3. Add a `stream-published` event listener using `client.on()`
+1. Add a success message to the console log using `console.log()`.
+2. Publish the local stream using `client.publish()`.
+3. Add a `stream-published` event listener using `client.on()`.
 
 If the callback fails, add a console log for the error `err` using `console.log`.
 
@@ -920,7 +924,7 @@ If the callback fails, add a console log for the error `err` using `console.log`
 
 The join event listeners and callbacks are placed at the end of the `join()` method.
 
-Initialize `channelKey` to an empty string.
+Initialize `channelKey` to an empty string:
 
 ``` JavaScript
       channelKey = "";
@@ -935,9 +939,9 @@ Initialize `channelKey` to an empty string.
 
 ##### Error Event
 
-The `error` event listener triggers when there is an error on the Agora client.
+The `error` event listener is triggered when an error occurs on the Agora `client`.
 
-Log the error reason `err.reason` using `console.log()`. If the error reason is that the channel key has expired specified by `DYNAMIC_KEY_TIMEOUT` renew the `channelKey` using `client.renewChannelKey()`.
+Log the cause of the error `err.reason` using `console.log()`. If the reason for the error is the expiration of the channel key specified by `DYNAMIC_KEY_TIMEOUT`, renew the `channelKey` using `client.renewChannelKey()`.
 
 ``` JavaScript
       channelKey = "";
@@ -955,9 +959,9 @@ Log the error reason `err.reason` using `console.log()`. If the error reason is 
 
 ##### Stream Added Event
 
-The `stream-added` event listener triggers when a stream is added to the Agora client.
+The `stream-added` event listener is triggered when a stream is added to the Agora `client`.
 
-Add console logs for the `stream` and stream ID `stream.getId()` using `console.log()`.
+Add console logs for the `stream` and the stream ID `stream.getId()` using `console.log()`.
 
 Subscribe the `stream` to the Agora `client` using `client.subscribe()`.
 
@@ -974,11 +978,11 @@ Subscribe the `stream` to the Agora `client` using `client.subscribe()`.
 
 ##### Stream Subscribed Event
 
-The `stream-subscribed` event listener triggers when a stream is subscribed to the Agora client.
+The `stream-subscribed` event listener is triggered when a stream is subscribed to the Agora `client`.
 
 Display the stream ID `stream.getId()` in the console log using `console.log()`, add the stream ID to the `uids` array using `uids.push()`, and update the UI using `onContextUpdate()`.
 
-Ensure that the stream's UI element is empty using `$('div#video #agora_remote' + stream.getId()).length === 0`, before adding the video object to the stage using `$('div#video').append()`.
+Ensure that the stream's UI element is empty using `$('div#video #agora_remote' + stream.getId()).length === 0` before adding the video object to the stage using `$('div#video').append()`.
 
 Complete the callback by playing the `stream` using `stream.play()`.
 
@@ -997,13 +1001,13 @@ Complete the callback by playing the `stream` using `stream.play()`.
 
 ##### Stream Removed Event
 
-The `stream-removed` event listener triggers when a stream is removed from the Agora client.
+The `stream-removed` event listener is triggered when a stream is removed from the Agora` client`.
 
-1. Stop the stream using `stream.stop()`
-2. Remove the stream UI object using `$('#agora_remote' + stream.getId()).remove()`
-3. Retrieve the index of the stream using `uids.indexOf()` and remove it from the `uids` array using `uids.splice()`
-4. Update the UI using `onContextUpdate()`
-5. Log the stream ID to confirm its removal using `console.log()`
+1. Stop the stream using `stream.stop()`.
+2. Remove the stream UI object using `$('#agora_remote' + stream.getId()).remove()`.
+3. Retrieve the index of the stream using `uids.indexOf()` and remove it from the `uids` array using `uids.splice()`.
+4. Update the UI using `onContextUpdate()`.
+5. Log the stream ID to confirm its removal using `console.log()`.
 
 ``` JavaScript
       client.on('stream-removed', function (evt) {
@@ -1019,13 +1023,13 @@ The `stream-removed` event listener triggers when a stream is removed from the A
 
 ##### Peer Leave Event
 
-The `peer-leave` event listener triggers when a peer is removed from the Agora client.
+The `peer-leave` event listener is triggered when a peer is removed from the Agora `client`.
 
-Verify the `stream` is valid then:
+1. Verify the `stream` is valid.
 
-- Stop the `stream` using `stream.stop()`
-- Remove the stream's UI element from the stage using `$('#agora_remote' + stream.getId()).remove()`
-- Log the user ID to the console using `console.log()`
+2. Stop the `stream` using `stream.stop()`.
+3. Remove the stream's UI element from the stage using `$('#agora_remote' + stream.getId()).remove()`.
+4. Log the user ID to the console using `console.log()`.
 
 ``` JavaScript
       client.on('peer-leave', function (evt) {
@@ -1040,7 +1044,7 @@ Verify the `stream` is valid then:
 
 ##### Live Streaming Events
 
-The `liveStreamingStarted` event listener triggers when a live stream begins. Add a log to the console using `console.log()` to indicate the stream has started.
+The `liveStreamingStarted` event listener is triggered when a live stream begins. Add a log to the console using `console.log()` to indicate the stream has started.
 
 ``` JavaScript
       //live streaming events..
@@ -1049,7 +1053,7 @@ The `liveStreamingStarted` event listener triggers when a live stream begins. Ad
       });  // streaming start callback
 ```
 
-The `liveStreamingFailed` event listener triggers when a live stream fails. Add a log to the console using `console.log()` to indicate the stream failure.
+The `liveStreamingFailed` event listener is triggered when a live stream fails. Add a log to the console using `console.log()` to indicate the stream failure.
 
 ``` JavaScript
       client.on('liveStreamingFailed', function (evt) {
@@ -1057,7 +1061,7 @@ The `liveStreamingFailed` event listener triggers when a live stream fails. Add 
       });  // streaming fail callback
 ```
 
-The `liveStreamingStopped` event listener triggers when a live stream stops. Add a log to the console using `console.log()` to indicate the stream has stopped.
+The `liveStreamingStopped` event listener is triggered when a live stream stops. Add a log to the console using `console.log()` to indicate the stream has stopped.
 
 ``` JavaScript
       client.on('liveStreamingStopped', function (evt) {
@@ -1065,7 +1069,7 @@ The `liveStreamingStopped` event listener triggers when a live stream stops. Add
       });  // streaming stop callback
 ```
 
-The `liveTranscodingUpdated` event listener triggers when a live stream is updated. Add a log to the console using `console.log()` to indicate the stream has been updated.
+The `liveTranscodingUpdated` event listener is triggered when a live stream is updated. Add a log to the console using `console.log()` to indicate the stream has been updated.
 
 ``` JavaScript
       client.on('liveTranscodingUpdated', function (evt) {
@@ -1083,11 +1087,11 @@ The `liveTranscodingUpdated` event listener triggers when a live stream is updat
 
 ##### Streaming User Add Event Listener and Callback
 
-The `live_streaming_user_add` event listener triggers when the user clicks on the `live_streaming_user_add` UI button.
+The `live_streaming_user_add` event listener is triggered when the user clicks the `live_streaming_user_add` UI button.
 
-Create a `coding` properties object and retrieve:
+Create a `coding` properties object and retrieve the following:
 
-Property name|Value|Description
+Property Name|Value|Description
 ---|---|---
 `x`|`toInt($("#live_streaming_user_x").val())`|X location of the video
 `y`|`toInt($("#live_streaming_user_y").val())`|Y location of the video
@@ -1099,7 +1103,7 @@ Property name|Value|Description
 
 **Note:** Most of the property values are converted to integers using `toInt()`.
 
-If `coding.uid` is not valid, display an alert prompting the user to `provide a uid`. Otherwise, invoke `addTranscodingUser` applying the `coding` properties object.
+If the `coding.uid` is not valid, display an alert prompting the user to `provide a uid`. Otherwise, invoke `addTranscodingUser` applying the `coding` properties object.
 
 ``` JavaScript
       $('#live_streaming_user_add').off("click").on("click", function () {
@@ -1122,7 +1126,7 @@ If `coding.uid` is not valid, display an alert prompting the user to `provide a 
 
 ##### Streaming User Remove Event Listener and Callback
 
-The `live_streaming_user_remove` event listener triggers when the user clicks on the `live_streaming_user_remove` UI button and invoke the `removeTranscodingUser()` method.
+The `live_streaming_user_remove` event listener is triggered when the user clicks the `live_streaming_user_remove` UI button and invokes the `removeTranscodingUser()` method.
 
 ``` JavaScript
       $('#live_streaming_user_remove').off("click").on("click", function () {
@@ -1132,11 +1136,11 @@ The `live_streaming_user_remove` event listener triggers when the user clicks on
 
 ##### Start Streaming Event Listener and Callback
 
-The `live_streaming_start_streaming` event listener triggers when the user clicks on the `live_streaming_start_streaming` UI button. 
+The `live_streaming_start_streaming` event listener is triggered when the user clicks the `live_streaming_start_streaming` UI button. 
 
-1. Retrieve the streaming URL using `$("#live_streaming_url").val()`
-2. Retrieve the enable transcoding value using `$("#live_streaming_enable_transcoding").prop("checked")`
-3. Invokes the `addStreaming()` method with the `url` and `enableTranscoding` parameter values.
+1. Retrieve the streaming URL using `$("#live_streaming_url").val()`.
+2. Retrieve the enable transcoding value using `$("#live_streaming_enable_transcoding").prop("checked")`.
+3. Invoke the `addStreaming()` method with the `url` and `enableTranscoding` parameter values.
 
 ``` JavaScript
       $('#live_streaming_start_streaming').off("click").on("click", function () {
@@ -1148,7 +1152,7 @@ The `live_streaming_start_streaming` event listener triggers when the user click
 
 ##### Stop Streaming Event Listener and Callback
 
-The `live_streaming_stop_streaming` event listener triggers when the user clicks on the `live_streaming_stop_streaming` UI button and invoke the `removeStreaming()` method.
+The `live_streaming_stop_streaming` event listener is triggered when the user clicks the `live_streaming_stop_streaming` UI button and invokes the `removeStreaming()` method.
 
 ``` JavaScript
       $('#live_streaming_stop_streaming').off("click").on("click", function () {
@@ -1158,7 +1162,7 @@ The `live_streaming_stop_streaming` event listener triggers when the user clicks
 
 ##### Set Streaming Encoding Event Listener and Callback
 
-The `live_streaming_set_encoding` event listener triggers when the user clicks on the `live_streaming_set_encoding` UI button and invoke the `setEncoding()` method.
+The `live_streaming_set_encoding` event listener is triggered when the user clicks the `live_streaming_set_encoding` UI button and invokes the `setEncoding()` method.
 
 ``` JavaScript
       $('#live_streaming_set_encoding').off("click").on("click", function () {
@@ -1166,11 +1170,11 @@ The `live_streaming_set_encoding` event listener triggers when the user clicks o
       });
 ```
 
-### Create Leave Method
+### Create the Leave Method
 
 The `leave()` method exits the user from the channel. Set the `leave` element's `disabled` property to `true` and invoke `client.leave()`.
 
-Add console logs to the callbacks using `console.log()` to determine if the leave action was successful or not.
+To determine if the leave action is successful, add console logs to the callbacks using `console.log()`.
 
 ``` JavaScript
     function leave() {
@@ -1183,13 +1187,13 @@ Add console logs to the callbacks using `console.log()` to determine if the leav
     }
 ```
 
-### Create Publish and Unpublish Methods
+### Create the Publish and Unpublish Methods
 
 The `publish()` method publishes the local stream.
 
-Set the `disabled` property of the `publish` UI element to `true` and `unpublish` UI element to `false`.
+Set the `disabled` property of the `publish` UI element to `true`. Set the `disabled` property of the `unpublish` UI element to `false`.
 
-Invoke `client.publish()` and add a console logs to the callback using `console.log()` to identify any publishing stream errors.
+To identify any publishing stream errors, invoke `client.publish()` and add a console log to the callback using `console.log()`. 
 
 ``` JavaScript
     function publish() {
@@ -1203,9 +1207,9 @@ Invoke `client.publish()` and add a console logs to the callback using `console.
 
 The `unpublish()` method publishes the local stream.
 
-Set the `disabled` property of the `publish` UI element to `false` and `unpublish` UI element to `true`.
+Set the `disabled` property of the `publish` UI element to `false`. Set the `disabled` property of the `unpublish` UI element to `true`.
 
-Invoke `client.unpublish()` and add a console logs to the callback using `console.log()` to identify any unpublishing stream errors.
+To identify any unpublishing stream errors, invoke `client.unpublish()` and add a console log to the callback using `console.log()`. 
 
 ``` JavaScript
     function unpublish() {
@@ -1218,8 +1222,8 @@ Invoke `client.unpublish()` and add a console logs to the callback using `consol
 ```
 
 ## Resources
-* Complete API documentation is available at the [Document Center](https://docs.agora.io/en/).
-* You can file bugs about this sample [here](https://github.com/AgoraIO/Agora-Interactive-Broadcasting-Live-Streaming-Web/issues).
+* Find complete [API documentation at the Document Center](https://docs.agora.io/en/).
+* [File bugs about this sample](https://github.com/AgoraIO/Agora-Interactive-Broadcasting-Live-Streaming-Web/issues).
 
 ## License
 This software is under the MIT License (MIT). [View the license](LICENSE.md).

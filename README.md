@@ -486,7 +486,7 @@ Variable|Description
 `uids`|An array of users
 `transcodingUsers`|An array of transcoding users
 `streams`|An array of user streams
-`publishUrl`|The Real-Time Messaging Protocol (RTMP) PUSH URL
+`publishUrl`|The Real-Time Messaging Protocol (RTMP) URL to push to
 `audioSelect`|The audio select UI menu
 `videoSelect`|The video select UI menu
 
